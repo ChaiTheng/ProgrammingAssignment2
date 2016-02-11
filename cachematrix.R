@@ -21,7 +21,7 @@
 ##---------------------------------------------------
 ##  Example -- during 2nd run with cache invovle
 ##---------------------------------------------------
-# #Start the Clock
+## Start the Clock
 ## ptm <- proc.time()
 ## cacheSolve(y)
 ##  inverse is cached
@@ -37,10 +37,10 @@
 ## Caching reduce computation time. 
 
 makeCacheMatrix <- function(x = matrix()) {
-  # Cached inverse of matrix inv is a temporary matrix
+  ## Cached inverse of matrix inv is a temporary matrix
   inv <- NULL
   
-  # Function of set from matrix
+  ## Function of set from matrix
   set <- function(y) {
     x   <<- y
     inv <<- NULL
@@ -64,22 +64,22 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
 
-  # Get the inverted matrix 'x'
+  ## Get the inverted matrix 'x'
    inv <- x$get_inv()
   
-  # Check for available cached 
+  ## Check for available cached 
   if (!is.null(inv)) {
     message("inverse is cached")
     return(inv)
   }
   
-  # Compute inverse of matrix 
+  ## Compute inverse of matrix 
   m  <- x$get()
   inv<- solve(m, ...)
   
-  # Cache inverse
+  ## Cache inverse
   x$set_inv(inv)
   
-  # Return inverse of matrix
+  ## Return inverse of matrix
   return(inv)
 }
